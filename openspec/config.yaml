@@ -7,12 +7,27 @@ schema: spec-driven
 # Keep here only what the agent cannot derive from code, and constraints
 # that affect artifacts and the workflow. Keep code-derivable facts out.
 context: |
-  # Project-specific context injected into every artifact instruction.
-  # Fill in after installing AgentCraft; remove this TODO line once done.
-  # Keep here only what the agent cannot derive from code, and constraints
-  # that affect artifacts and the workflow. Keep code-derivable facts out.
-  # Example entries: "Public API is versioned under /api/v1", "Tests must
-  # run against Postgres 16 via Testcontainers, not H2".
+  # Project: "the cheapest storage" — a benchmark for choosing the most
+  # disk-efficient storage for audit logs (records of user actions in a system).
+  # The results will be published as a Medium article, so the comparison must
+  # be reproducible, fairly configured for every engine, and documented well
+  # enough for readers to follow (methodology, configs, measurements).
+  #
+  # Goal: measure and compare on-disk footprint of each candidate storage
+  # engine for the same audit-log dataset, to pick the cheapest option.
+  #
+  # Candidate engines under comparison: PostgreSQL, TimescaleDB (TSDB),
+  # MongoDB, ClickHouse, MinIO, and optionally Ceph.
+  #
+  # Comparison metric: on-disk size (bytes) per dataset size.
+  # Dataset sizes: 100K, 1M, 3M, 10M, 50M, 100M records.
+  #
+  # Approach: a reproducible test bench (containers via Docker Compose) plus
+  # benchmark tooling that generates a fixed audit-log dataset, loads it into
+  # each engine, and measures disk usage.
+  #
+  # Constraints: comparisons must use the same input dataset and same
+  # hardware/container environment so disk-size numbers are comparable.
 
 rules:
   proposal:
