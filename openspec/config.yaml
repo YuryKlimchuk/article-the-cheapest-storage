@@ -1,0 +1,42 @@
+# AgentCraft — OpenSpec configuration.
+# Workflow schema: proposal → specs → design → tasks.
+schema: spec-driven
+
+# Project context is injected into every artifact instruction.
+# Fill in for the specific project when installing AgentCraft.
+# Keep here only what the agent cannot derive from code, and constraints
+# that affect artifacts and the workflow. Keep code-derivable facts out.
+context: |
+  # Project-specific context injected into every artifact instruction.
+  # Fill in after installing AgentCraft; remove this TODO line once done.
+  # Keep here only what the agent cannot derive from code, and constraints
+  # that affect artifacts and the workflow. Keep code-derivable facts out.
+  # Example entries: "Public API is versioned under /api/v1", "Tests must
+  # run against Postgres 16 via Testcontainers, not H2".
+
+rules:
+  proposal:
+    - Describe why, what changes, capabilities, impact, and non-goals.
+    - State goals, boundaries, and success criteria of the change.
+    - Respect the existing architecture and previously made decisions.
+  specs:
+    - Formulate requirements atomically, with a SHALL/MUST modal verb.
+    - Accompany each non-trivial requirement with a Scenario (WHEN/THEN).
+    - Cover errors and edge cases.
+  design:
+    - Explain architectural decisions (D1, D2...), dependencies, and trade-offs.
+    - Use Mermaid for non-trivial interaction diagrams.
+  tasks:
+    - Break implementation into verifiable tasks.
+    - Include tests and architectural checks.
+
+operations:
+  apply:
+    guidance:
+      - Implement tasks one by one, recording progress.
+      - Run build and tests after significant changes.
+      - The Test plan (test-plan.md) must be approved before implementation.
+  archive:
+    guidance:
+      - Ensure all tasks are closed and checks passed.
+      - Briefly describe the outcome before finishing.
