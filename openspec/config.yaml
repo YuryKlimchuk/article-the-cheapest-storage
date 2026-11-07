@@ -17,7 +17,7 @@ context: |
   # engine for the same audit-log dataset, to pick the cheapest option.
   #
   # Candidate engines under comparison: PostgreSQL, TimescaleDB (TSDB),
-  # MongoDB, ClickHouse, MinIO, and optionally Ceph.
+  # MongoDB, ClickHouse, MinIO.
   #
   # Comparison metric: on-disk size (bytes) per dataset size.
   # Dataset sizes: 100K, 1M, 3M, 10M, 50M, 100M records.
